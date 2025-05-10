@@ -2,7 +2,7 @@ import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { Input } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UserOutlined, MailOutlined, LockOutlined, NumberOutlined } from '@ant-design/icons';
+import {  MailOutlined, LockOutlined, NumberOutlined } from '@ant-design/icons';
 
 interface InputComponentProps {
   name: string;
@@ -42,7 +42,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
       case 'number':
         return <NumberOutlined className="text-gray-400" />;
       default:
-        return <UserOutlined className="text-gray-400" />;
+        return '';
     }
   };
 
@@ -74,17 +74,16 @@ const InputComponent: React.FC<InputComponentProps> = ({
               type={type}
               placeholder={placeholder}
               disabled={disabled}
-              status={error ? 'error' : ''}
+              className={`w-full rounded-lg border-gray-300 shadow-sm transition-all duration-200 ${
+                error ? 'border-red-500' : 'hover:border-blue-400 focus:border-blue-500'
+              } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''} h-[40px] text-base`}
+              style={{
+                padding: '0 12px',
+              }}
               prefix={prefix || getIcon()}
               suffix={suffix}
               showCount={showCount}
               maxLength={maxLength}
-              className={`w-full rounded-lg transition-all duration-200 ${
-                error ? 'border-red-500' : 'border-gray-300'
-              } ${disabled ? 'bg-gray-100' : 'bg-white'} h-[50px] text-base`}
-              style={{
-                padding: '0 16px',
-              }}
             />
             <AnimatePresence>
               {error && (

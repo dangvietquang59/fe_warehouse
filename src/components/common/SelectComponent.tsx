@@ -81,13 +81,23 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
                 error ? 'border-red-500' : 'border-gray-300'
               } ${disabled ? 'bg-gray-100' : 'bg-white'}`}
               style={{
-                height: '50px',
+                height: '40px',
                 fontSize: '16px',
               }}
               dropdownStyle={{
-                borderRadius: '0.5rem',
+                borderRadius: '8px',
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               }}
+              dropdownRender={(menu) => (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {menu}
+                </motion.div>
+              )}
             />
             <AnimatePresence>
               {error && (

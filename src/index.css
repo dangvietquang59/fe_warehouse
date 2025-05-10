@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Roboto', system-ui, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Custom styles for form elements */
+  .form-control {
+    @apply mb-4;
+  }
+
+  .label {
+    @apply mb-2 block;
+  }
+
+  .label-text {
+    @apply text-gray-700;
+  }
+
+  /* Input styles */
+  input, select, textarea {
+    @apply font-normal;
+  }
+
+  /* Placeholder styles */
+  ::placeholder {
+    @apply text-gray-400;
+  }
+
+  /* Focus styles */
+  input:focus, select:focus, textarea:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+  }
+}

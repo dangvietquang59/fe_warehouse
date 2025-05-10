@@ -1,0 +1,19 @@
+{
+    "common": {
+        "manageCustomer": "Quản lý khách đến công ty",
+        "listToday": "Danh sách hôm nay",
+        "arrived": "Đã đến",
+        "arrivedYet": "Chưa đến",
+        "requestorAndDepartment": "Người đề xuất & Bộ phận tiếp đón",
+        "customerNames": "Danh sách khách hàng",
+        "timeArrive": "Giờ đến",
+        "content": "Nội dung",
+        "customer": "Khách",
+        "room": "Phòng",
+        "totalCustomer": "Tổng khách đến",
+        "totalCustomerArrived": "Khách đã đến",
+        "totalCustomerArrivedYet": "Khách chưa đến",
+        "noData": "Không có dữ liệu",
+        "find": "Tìm kiếm"
+    }
+}

@@ -66,15 +66,18 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
               showTime={showTime}
               disabledDate={disabledDate}
               size={size}
-              suffixIcon={<CalendarOutlined className="text-gray-400" />}
               className={`w-full rounded-lg transition-all duration-200 ${
                 error ? 'border-red-500' : 'border-gray-300'
               } ${disabled ? 'bg-gray-100' : 'bg-white'}`}
               style={{
-                height: '50px',
+                height: '40px',
                 fontSize: '16px',
               }}
-              popupClassName="rounded-lg shadow-lg"
+              popupStyle={{
+                borderRadius: '8px',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+              }}
+              suffixIcon={<CalendarOutlined className="text-gray-400" />}
             />
             <AnimatePresence>
               {error && (

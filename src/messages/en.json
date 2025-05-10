@@ -1,0 +1,19 @@
+{
+    "common": {
+        "manageCustomer": "Visitor Management",
+        "listToday": "Today's List",
+        "arrived": "Arrived",
+        "arrivedYet": "Not Yet Arrived",
+        "requestorAndDepartment": "Requestor & Receiving Department",
+        "customerNames": "Customer List",
+        "timeArrive": "Arrival Time",
+        "content": "Content",
+        "customer": "Customer",
+        "room": "Room",
+        "totalCustomer": "Total Visitors",
+        "totalCustomerArrived": "Visitors Arrived",
+        "totalCustomerArrivedYet": "Visitors Not Yet Arrived",
+        "noData": "No data available",
+        "find": "Search"
+    }
+}

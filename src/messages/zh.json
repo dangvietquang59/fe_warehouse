@@ -1,0 +1,19 @@
+{
+    "common": {
+        "manageCustomer": "來訪客戶管理",
+        "listToday": "今日名單",
+        "arrived": "已到達",
+        "arrivedYet": "尚未到達",
+        "requestorAndDepartment": "申請人與接待部門",
+        "customerNames": "來訪客戶名單",
+        "timeArrive": "到達時間",
+        "content": "內容",
+        "customer": "訪客",
+        "room": "會議室",
+        "totalCustomer": "來訪總人數",
+        "totalCustomerArrived": "已到訪人數",
+        "totalCustomerArrivedYet": "尚未到訪人數",
+        "noData": "無可用資料",
+        "find": "搜尋"
+    }
+}
