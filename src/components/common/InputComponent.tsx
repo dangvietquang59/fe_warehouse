@@ -58,7 +58,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
           animate={{ opacity: 1 }}
           className="label"
         >
-          <span className="label-text font-medium">
+          <span className="label-text font-medium text-[14px]">
             {label}
             {required && <span className="text-red-500 ml-1">*</span>}
           </span>

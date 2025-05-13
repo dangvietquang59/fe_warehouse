@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import BlankLayout from "@/layouts/BlankLayout";
 import Login from "@/pages/Login";
+import Logup from "@/pages/Logup";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
@@ -21,7 +22,10 @@ export const router = createBrowserRouter([
     element: <BlankLayout/>,
     children:[
       {
-        path:"sign-in", element:<Login/>
+        path:"sign-in", element:<Login/>,
+      },
+      {
+        path:"sign-up", element:<Logup/>
       }
     ]
   }
