@@ -15,8 +15,14 @@ const Logup = () => {
             toast.error('Mật khẩu không khớp');
             return;
         }
+        const new_data = {
+            email: data.email,
+            username: data.username,
+            full_name: data.fullname,
+            password: data.password,
+        };
         await authApis
-            .signUp(data)
+            .signUp(new_data)
             .then(res => {
                 console.log(res);
                 toast.success('Đăng ký thành công');

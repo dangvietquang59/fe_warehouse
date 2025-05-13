@@ -5,3 +5,10 @@ export type RegisterType = {
     password: string;
     confirmPassword: string;
 };
+
+export type Create_RegisterTyppe = {
+    email: string;
+    fullname: string;
+    username: string;
+    password: string;
+};
