@@ -6,7 +6,8 @@ import authApis from '@/apis/authApis';
 import { Link } from 'react-router-dom';
 import paths from '@/utils/constants/paths';
 import { toast } from 'react-hot-toast';
-import { RegisterType } from '@/types/register-type';
+import { RegisterType } from '@/types/auth/auth-type';
+
 const Logup = () => {
     const { control, handleSubmit } = useForm<RegisterType>();
     const onSubmit = async (data: RegisterType) => {

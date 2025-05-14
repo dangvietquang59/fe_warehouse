@@ -12,3 +12,8 @@ export type Create_RegisterTyppe = {
     username: string;
     password: string;
 };
+
+export type LoginType = {
+    account: string;
+    password: string;
+};

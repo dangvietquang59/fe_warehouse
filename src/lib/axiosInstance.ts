@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Tạo instance riêng
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_PUBLIC_API_URL, // ví dụ: http://localhost:3000/api
+    baseURL: import.meta.env.VITE_LOCAL_API_URL, // ví dụ: http://localhost:3000/api
     timeout: 60 * 1000,
     headers: {
         'Content-Type': 'application/json',
