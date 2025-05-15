@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import paths from '@/utils/constants/paths';
+import { Spin } from 'antd';
 
 // Component này sẽ kiểm tra nếu đã đăng nhập thì cho phép truy cập vào các routes được bảo vệ
 // Nếu chưa đăng nhập thì chuyển hướng đến trang đăng nhập
@@ -17,7 +18,9 @@ export const RequireAuth = () => {
     return (
         <Suspense
             fallback={
-                <div className="flex h-screen w-screen items-center justify-center">Loading...</div>
+                <div className="flex h-screen w-screen items-center justify-center">
+                    <Spin />
+                </div>
             }
         >
             <Outlet />
@@ -40,7 +43,9 @@ export const RedirectIfAuth = () => {
     return (
         <Suspense
             fallback={
-                <div className="flex h-screen w-screen items-center justify-center">Loading...</div>
+                <div className="flex h-screen w-screen items-center justify-center">
+                    <Spin />
+                </div>
             }
         >
             <Outlet />

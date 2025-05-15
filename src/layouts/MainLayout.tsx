@@ -2,7 +2,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-
+import { Spin } from 'antd';
 const MainLayout = () => {
     return (
         <div className="min-h-screen flex flex-col">
@@ -12,7 +12,7 @@ const MainLayout = () => {
                     <Suspense
                         fallback={
                             <div className="flex h-full w-full items-center justify-center min-h-[500px]">
-                                Loading...
+                                <Spin />
                             </div>
                         }
                     >

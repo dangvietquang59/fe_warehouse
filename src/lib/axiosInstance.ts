@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Kiểm tra API URL
-const apiUrl = import.meta.env.VITE_LOCAL_API_URL || import.meta.env.VITE_PUBLIC_API_URL;
+const apiUrl = import.meta.env.VITE_PUBLIC_API_URL || import.meta.env.VITE_LOCAL_API_URL;
 if (!apiUrl) {
     console.warn('VITE_LOCAL_API_URL không được định nghĩa trong file .env!');
     console.warn('Sử dụng URL mặc định');

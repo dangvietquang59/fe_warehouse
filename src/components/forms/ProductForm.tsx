@@ -3,14 +3,15 @@ import SelectComponent from '../common/SelectComponent';
 import { useForm } from 'react-hook-form';
 import TextAreaComponent from '../common/TextAreaComponent';
 import { Button } from 'antd';
-
+import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
+import { createProductType } from '@/types/product-type';
 interface ProductFormProps {
     handleCloseModal: () => void;
 }
 function ProductForm({ handleCloseModal }: ProductFormProps) {
-    const { control, handleSubmit } = useForm();
-
-    const onSubmit = (data: any) => {
+    const { control, handleSubmit } = useForm<createProductType>();
+    const { t } = useTranslationCustom();
+    const onSubmit = (data: createProductType) => {
         console.log(data);
         handleCloseModal();
     };
@@ -19,44 +20,44 @@ function ProductForm({ handleCloseModal }: ProductFormProps) {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col gap-[10px]">
                     <InputComponent
-                        label="Tên sản phẩm"
+                        label={t.product.name}
                         name="name"
-                        placeholder="Nhập tên sản phẩm"
+                        placeholder={t.product.name}
                         control={control}
                     />
+
                     <InputComponent
-                        label="Mã sản phẩm"
-                        name="sku"
-                        placeholder="Nhập mã sản phẩm"
-                        control={control}
-                    />
-                    <InputComponent
-                        label="Giá"
+                        label={t.product.price}
                         name="price"
-                        placeholder="Nhập giá"
+                        placeholder={t.product.price}
                         control={control}
                     />
                     <InputComponent
-                        label="Số lượng"
-                        name="quantity"
-                        placeholder="Nhập số lượng"
+                        label={t.product.unit}
+                        name="unit"
+                        placeholder={t.product.unit}
                         control={control}
                     />
                     <SelectComponent
-                        label="Đơn vị"
-                        name="unit"
-                        placeholder="Chọn đơn vị"
+                        label={t.product.category}
+                        name="category_id"
+                        placeholder={t.product.category}
                         control={control}
                         options={[]}
                     />
                     <TextAreaComponent
-                        label="Mô tả"
+                        label={t.product.description}
                         name="description"
-                        placeholder="Nhập mô tả"
+                        placeholder={t.product.description}
                         control={control}
                     />
-                    <Button htmlType="submit" className="bg-blue-500 text-white">
-                        Thêm sản phẩm
+                    <Button
+                        htmlType="submit"
+                        className="text-white h-[40px]"
+                        variant="solid"
+                        color="green"
+                    >
+                        {t.common.add}
                     </Button>
                 </div>
             </form>
