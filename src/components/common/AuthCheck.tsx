@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import paths from '@/utils/constants/paths';
 
 // Component này sẽ kiểm tra nếu đã đăng nhập thì cho phép truy cập vào các routes được bảo vệ
@@ -13,7 +14,15 @@ export const RequireAuth = () => {
     }
 
     // Nếu đã đăng nhập, cho phép truy cập vào route con
-    return <Outlet />;
+    return (
+        <Suspense
+            fallback={
+                <div className="flex h-screen w-screen items-center justify-center">Loading...</div>
+            }
+        >
+            <Outlet />
+        </Suspense>
+    );
 };
 
 // Component này sẽ kiểm tra nếu đã đăng nhập thì chuyển hướng đến trang home
@@ -28,5 +37,13 @@ export const RedirectIfAuth = () => {
     }
 
     // Nếu chưa đăng nhập, cho phép truy cập vào route con
-    return <Outlet />;
+    return (
+        <Suspense
+            fallback={
+                <div className="flex h-screen w-screen items-center justify-center">Loading...</div>
+            }
+        >
+            <Outlet />
+        </Suspense>
+    );
 };

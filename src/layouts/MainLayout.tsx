@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 const MainLayout = () => {
     return (
@@ -8,7 +9,15 @@ const MainLayout = () => {
             <Header />
             <div className="bg-gray-100">
                 <main className="flex-1 p-4 mt-[71px] min-h-screen max-w-[1440px] mx-auto w-full">
-                    <Outlet />
+                    <Suspense
+                        fallback={
+                            <div className="flex h-full w-full items-center justify-center min-h-[500px]">
+                                Loading...
+                            </div>
+                        }
+                    >
+                        <Outlet />
+                    </Suspense>
                 </main>
             </div>
             <Footer />

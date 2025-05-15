@@ -1,19 +1,40 @@
 {
     "common": {
-        "manageCustomer": "Visitor Management",
-        "listToday": "Today's List",
-        "arrived": "Arrived",
-        "arrivedYet": "Not Yet Arrived",
-        "requestorAndDepartment": "Requestor & Receiving Department",
-        "customerNames": "Customer List",
-        "timeArrive": "Arrival Time",
-        "content": "Content",
-        "customer": "Customer",
-        "room": "Room",
-        "totalCustomer": "Total Visitors",
-        "totalCustomerArrived": "Visitors Arrived",
-        "totalCustomerArrivedYet": "Visitors Not Yet Arrived",
-        "noData": "No data available",
-        "find": "Search"
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "save": "Save",
+        "close": "Close"
+    },
+    "page": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "customers": "Customers",
+        "employees": "Employees",
+        "orders": "Orders",
+        "suppliers": "Suppliers",
+        "reports": "Reports",
+        "settings": "Settings",
+        "login": "Login",
+        "register": "Register"
+    },
+    "product": {
+        "name": "Product Name",
+        "code": "Product Code",
+        "category": "Category",
+        "unit": "Unit",
+        "price": "Price",
+        "quantity": "Quantity",
+        "description": "Description",
+        "actions": "Actions",
+        "addProduct": "Add Product",
+        "listProduct": "List Product"
+    },
+    "userHeader": {
+        "profile": "Profile",
+        "language": "Language",
+        "logout": "Logout"
     }
 }

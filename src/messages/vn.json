@@ -1,19 +1,41 @@
 {
     "common": {
-        "manageCustomer": "Quản lý khách đến công ty",
-        "listToday": "Danh sách hôm nay",
-        "arrived": "Đã đến",
-        "arrivedYet": "Chưa đến",
-        "requestorAndDepartment": "Người đề xuất & Bộ phận tiếp đón",
-        "customerNames": "Danh sách khách hàng",
-        "timeArrive": "Giờ đến",
-        "content": "Nội dung",
-        "customer": "Khách",
-        "room": "Phòng",
-        "totalCustomer": "Tổng khách đến",
-        "totalCustomerArrived": "Khách đã đến",
-        "totalCustomerArrivedYet": "Khách chưa đến",
-        "noData": "Không có dữ liệu",
-        "find": "Tìm kiếm"
+        "add": "Thêm",
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "cancel": "Hủy bỏ",
+        "save": "Lưu",
+        "close": "Đóng",
+        "search": "Tìm kiếm"
+    },
+    "page": {
+        "home": "Trang chủ",
+        "products": "Sản phẩm",
+        "categories": "Danh mục",
+        "customers": "Khách hàng",
+        "employees": "Nhân viên",
+        "orders": "Đơn hàng",
+        "suppliers": "Nhà cung cấp",
+        "reports": "Báo cáo",
+        "settings": "Cài đặt",
+        "login": "Đăng nhập",
+        "register": "Đăng ký"
+    },
+    "product": {
+        "name": "Tên sản phẩm",
+        "code": "Mã sản phẩm",
+        "category": "Danh mục",
+        "unit": "Đơn vị",
+        "price": "Giá",
+        "quantity": "Số lượng",
+        "description": "Mô tả",
+        "actions": "Hành động",
+        "addProduct": "Thêm sản phẩm",
+        "listProduct": "Danh sách sản phẩm"
+    },
+    "userHeader": {
+        "profile": "Hồ sơ",
+        "language": "Ngôn ngữ",
+        "logout": "Đăng xuất"
     }
 }

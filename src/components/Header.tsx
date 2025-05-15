@@ -10,48 +10,51 @@ import {
     PackageOpen,
     PackageSearch,
     Truck,
-    User,
 } from 'lucide-react';
 import { useState } from 'react';
+import UserMenu from './UserMenu';
+import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
+
 function Header() {
     const [seletedPage, setSeletedPage] = useState<string>(paths.home);
+    const { t } = useTranslationCustom();
 
     const pages = [
         {
-            name: 'Trang chủ',
+            name: t.page.home,
             path: paths.home,
             icon: <Box strokeWidth={1.5} />,
         },
         {
-            name: 'Sản phẩm',
+            name: t.page.products,
             path: paths.products,
             icon: <PackageSearch strokeWidth={1.5} />,
         },
         {
-            name: 'Danh mục sản phẩm',
+            name: t.page.categories,
             path: paths.categories,
             icon: <ChartBarStacked strokeWidth={1.5} />,
         },
         {
-            name: 'Đơn hàng',
+            name: t.page.orders,
             path: paths.orders,
             icon: <PackageOpen strokeWidth={1.5} />,
         },
 
         {
-            name: 'Nhà cung cấp',
+            name: t.page.suppliers,
             path: paths.suppliers,
             icon: <Truck strokeWidth={1.5} />,
         },
 
         {
-            name: 'Nhân viên',
+            name: t.page.employees,
             path: paths.employees,
             icon: <BookUser strokeWidth={1.5} />,
         },
 
         {
-            name: 'Báo cáo',
+            name: t.page.reports,
             path: paths.report,
             icon: <ClipboardPlus strokeWidth={1.5} />,
         },
@@ -66,7 +69,7 @@ function Header() {
                     height={50}
                     className="rounded-full"
                 />
-                <ul className="items-center gap-[20px] lg:flex hidden">
+                <ul className="items-center gap-[30px] lg:flex hidden">
                     {pages.map(page => (
                         <li key={page.path}>
                             <Link
@@ -82,8 +85,8 @@ function Header() {
                         </li>
                     ))}
                 </ul>
-                <div className="size-[40px] rounded-full bg-slate-200 flex items-center justify-center cursor-pointer">
-                    <User strokeWidth={1.5} />
+                <div className="flex items-center gap-[10px]">
+                    <UserMenu />
                 </div>
             </div>
         </header>

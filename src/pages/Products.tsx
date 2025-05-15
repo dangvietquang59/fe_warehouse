@@ -1,9 +1,22 @@
-import { Button, Spin, Alert, Table, Input } from 'antd';
+import { Button, Spin, Alert, Table, Input, Modal, Tag } from 'antd';
 import { useProducts } from '@/queries/product-query';
 import { ProductType } from '@/types/product-type';
-import { Plus } from 'lucide-react';
+import { Pen, Plus, Trash } from 'lucide-react';
+import ProductForm from '@/components/forms/ProductForm';
+import { useState } from 'react';
+import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
 function Products() {
     const { data, isLoading, error } = useProducts();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { t } = useTranslationCustom();
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
     const columns = [
         {
             title: 'STT',
@@ -11,29 +24,51 @@ function Products() {
             render: (_: any, __: ProductType, index: number) => index + 1,
         },
         {
-            title: 'Tên sản phẩm',
+            title: t.product.name,
             dataIndex: 'name',
         },
         {
-            title: 'Mã sản phẩm',
+            title: t.product.code,
             dataIndex: 'SKU',
         },
         {
-            title: 'Giá',
+            title: t.product.category,
+            dataIndex: 'category',
+            render: (category: any) => <Tag color="purple">{category.name}</Tag>,
+        },
+        {
+            title: t.product.price,
             dataIndex: 'price',
             render: (price: number) =>
                 price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }),
             sorter: (a: ProductType, b: ProductType) => a.price - b.price,
         },
         {
-            title: 'Đơn vị',
+            title: t.product.unit,
             dataIndex: 'unit',
         },
         {
-            title: 'Số lượng',
+            title: t.product.quantity,
             dataIndex: 'quantity',
             render: (quantity: number) => quantity.toLocaleString(),
             sorter: (a: ProductType, b: ProductType) => a.quantity - b.quantity,
+        },
+        {
+            title: t.product.actions,
+            key: 'action',
+            render: (_: any, __: ProductType) => (
+                <div className="flex items-center gap-[10px]">
+                    <Button color="geekblue" variant="solid">
+                        <Pen width={16} height={16} />
+                        {t.common.edit}
+                    </Button>
+                    <Button color="danger" variant="solid">
+                        <Trash width={16} height={16} />
+                        {t.common.delete}
+                    </Button>
+                </div>
+            ),
+            width: 150,
         },
     ];
     if (isLoading) {
@@ -61,23 +96,35 @@ function Products() {
     }
 
     return (
-        <div className="flex flex-col gap-[20px] bg-white p-[20px] rounded-[10px]">
-            <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Danh sách sản phẩm</h1>
-                <div className="flex items-center gap-[10px]">
-                    <Input placeholder="Tìm kiếm" className="h-[40px]" />
-                    <Button
-                        className="h-[40px] flex items-center gap-[10px]"
-                        color="geekblue"
-                        variant="solid"
-                    >
-                        <Plus />
-                        Thêm sản phẩm
-                    </Button>
+        <>
+            <div className="flex flex-col gap-[20px] bg-white p-[20px] rounded-[10px]">
+                <div className="flex items-center justify-between">
+                    <h1 className="text-2xl font-bold">{t.product.listProduct}</h1>
+                    <div className="flex items-center gap-[10px]">
+                        <Input placeholder="Tìm kiếm" className="h-[40px]" />
+                        <Button
+                            onClick={handleOpenModal}
+                            className="h-[40px] flex items-center gap-[10px]"
+                            color="green"
+                            variant="solid"
+                        >
+                            <Plus />
+                            {t.product.addProduct}
+                        </Button>
+                    </div>
                 </div>
+                <Table dataSource={data?.data} columns={columns} />
             </div>
-            <Table dataSource={data?.data} columns={columns} />
-        </div>
+            <Modal
+                title={t.product.addProduct}
+                open={isModalOpen}
+                onCancel={handleCloseModal}
+                footer={null}
+                centered
+            >
+                <ProductForm handleCloseModal={handleCloseModal} />
+            </Modal>
+        </>
     );
 }
 
