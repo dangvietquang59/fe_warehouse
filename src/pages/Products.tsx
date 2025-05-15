@@ -120,7 +120,12 @@ function Products() {
                         </Button>
                     </div>
                 </div>
-                <Table dataSource={data?.data} columns={columns} />
+                <Table
+                    dataSource={data?.data}
+                    columns={columns}
+                    loading={isLoading}
+                    rowKey={record => record.id}
+                />
             </div>
             <Modal
                 title={t.product.addProduct}

@@ -58,5 +58,14 @@
         "login": "Đăng nhập",
         "register": "Đăng ký",
         "account": "Tài khoản"
+    },
+    "user": {
+        "cardNumber": "Số thẻ",
+        "fullName": "Họ tên",
+        "email": "Email",
+        "username": "Tên tài khoản",
+        "role": "Vai trò",
+        "actions": "Hành động",
+        "listEmployee": "Danh sách nhân viên"
     }
 }

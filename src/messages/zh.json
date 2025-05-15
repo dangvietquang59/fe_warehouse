@@ -56,5 +56,14 @@
         "login": "登入",
         "register": "註冊",
         "account": "帳號"
+    },
+    "user": {
+        "cardNumber": "卡號",
+        "fullName": "全名",
+        "email": "電子郵件",
+        "username": "用戶名",
+        "role": "角色",
+        "actions": "操作",
+        "listEmployee": "員工列表"
     }
 }

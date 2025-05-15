@@ -56,5 +56,14 @@
         "login": "Login",
         "register": "Register",
         "account": "Account"
+    },
+    "user": {
+        "cardNumber": "Card Number",
+        "fullName": "Full Name",
+        "email": "Email",
+        "username": "Username",
+        "role": "Role",
+        "actions": "Actions",
+        "listEmployee": "List Employee"
     }
 }
