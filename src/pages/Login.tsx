@@ -8,9 +8,11 @@ import paths from '@/utils/constants/paths';
 import { toast } from 'react-hot-toast';
 import { LoginType } from '@/types/auth-type';
 import { useNavigate } from 'react-router-dom';
+import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
 const Login = () => {
     const navigate = useNavigate();
     const { control, handleSubmit } = useForm<LoginType>();
+    const { t } = useTranslationCustom();
     const onSubmit = async (data: LoginType) => {
         const new_data = {
             account: data.account,
@@ -20,14 +22,14 @@ const Login = () => {
             .login(new_data)
             .then(res => {
                 console.log(res);
-                toast.success('Đăng nhập thành công');
+                toast.success(t.auth.loginSuccess);
                 localStorage.setItem('token', res.data.access_token);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 navigate(paths.home);
             })
             .catch(err => {
                 console.log(err);
-                toast.error('Đăng nhập thất bại');
+                toast.error(t.auth.loginFailed);
             });
     };
     return (
@@ -44,33 +46,35 @@ const Login = () => {
                         className="rounded-full"
                     />
                 </div>
-                <h1 className="text-2xl font-bold text-center">Đăng nhập tài khoản kho hàng</h1>
+                <h1 className="text-2xl font-bold text-center">
+                    {t.auth.login} {t.auth.title}
+                </h1>
                 <form className="flex flex-col gap-[20px]" onSubmit={handleSubmit(onSubmit)}>
                     <InputComponent
                         name="account"
                         type="text"
-                        label="Tên tài khoản"
-                        placeholder="Nhập tên tài khoản"
+                        label={t.auth.account}
+                        placeholder={t.auth.account}
                         control={control}
                         required
                     />
                     <InputComponent
                         name="password"
                         type="password"
-                        label="Mật khẩu"
-                        placeholder="Nhập mật khẩu"
+                        label={t.auth.password}
+                        placeholder={t.auth.password}
                         control={control}
                         required
                     />
 
                     <div className="flex items-center justify-center gap-[10px]">
-                        <span>Chưa có tài khoản?</span>
+                        <span>{t.auth.noAccount}</span>
                         <Link to={paths.register} className="text-blue-500">
-                            Đăng ký
+                            {t.auth.register}
                         </Link>
                     </div>
                     <Button type="primary" htmlType="submit" className="h-[40px]">
-                        Đăng nhập
+                        {t.auth.login}
                     </Button>
                 </form>
             </div>

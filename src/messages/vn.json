@@ -7,7 +7,9 @@
         "save": "Lưu",
         "close": "Đóng",
         "search": "Tìm kiếm",
-        "tryAgain": "Thử lại"
+        "tryAgain": "Thử lại",
+        "success": "Thành công",
+        "failed": "Thất bại"
     },
     "page": {
         "home": "Trang chủ",
@@ -38,5 +40,23 @@
         "profile": "Hồ sơ",
         "language": "Ngôn ngữ",
         "logout": "Đăng xuất"
+    },
+    "auth": {
+        "title": "Kho hàng",
+        "email": "Email",
+        "fullname": "Họ tên",
+        "username": "Tên tài khoản",
+        "password": "Mật khẩu",
+        "confirmPassword": "Nhập lại mật khẩu",
+        "haveAccount": "Đã có tài khoản?",
+        "noAccount": "Chưa có tài khoản?",
+        "loginSuccess": "Đăng nhập thành công",
+        "loginFailed": "Đăng nhập thất bại",
+        "registerSuccess": "Đăng ký thành công",
+        "registerFailed": "Đăng ký thất bại",
+        "passwordNotMatch": "Mật khẩu không khớp",
+        "login": "Đăng nhập",
+        "register": "Đăng ký",
+        "account": "Tài khoản"
     }
 }

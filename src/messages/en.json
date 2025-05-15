@@ -38,5 +38,23 @@
         "profile": "Profile",
         "language": "Language",
         "logout": "Logout"
+    },
+    "auth": {
+        "title": "Warehouse",
+        "email": "Email",
+        "fullname": "Fullname",
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "haveAccount": "Have account?",
+        "noAccount": "No account?",
+        "loginSuccess": "Login success",
+        "loginFailed": "Login failed",
+        "registerSuccess": "Register success",
+        "registerFailed": "Register failed",
+        "passwordNotMatch": "Password not match",
+        "login": "Login",
+        "register": "Register",
+        "account": "Account"
     }
 }
