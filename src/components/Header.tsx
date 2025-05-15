@@ -11,14 +11,18 @@ import {
     PackageSearch,
     Truck,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import UserMenu from './UserMenu';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
 
 function Header() {
-    const [seletedPage, setSeletedPage] = useState<string>(paths.home);
+    const [selectedPage, setSelectedPage] = useState<string>(() => {
+        return localStorage.getItem('page') || paths.home;
+    });
     const { t } = useTranslationCustom();
-
+    useEffect(() => {
+        localStorage.setItem('page', selectedPage);
+    }, [selectedPage]);
     const pages = [
         {
             name: t.page.home,
@@ -74,9 +78,11 @@ function Header() {
                         <li key={page.path}>
                             <Link
                                 to={page.path}
-                                onClick={() => setSeletedPage(page.path)}
+                                onClick={() => setSelectedPage(page.path)}
                                 className={`text-[14px] text-[#737373] hover:text-black hover:duration-300 flex items-center gap-[10px] ${
-                                    seletedPage === page.path ? 'text-black' : ''
+                                    selectedPage === page.path
+                                        ? 'text-green-700 font-bold hover:text-green-700'
+                                        : ''
                                 }`}
                             >
                                 {page.icon}

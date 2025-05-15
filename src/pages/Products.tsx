@@ -1,4 +1,4 @@
-import { Button, Spin, Alert, Table, Input, Modal, Tag } from 'antd';
+import { Button, Spin, Alert, Table, Input, Modal, Tag, Tooltip } from 'antd';
 import { useProducts } from '@/queries/product-query';
 import { ProductType } from '@/types/product-type';
 import { Pen, Plus, Trash } from 'lucide-react';
@@ -57,15 +57,22 @@ function Products() {
             title: t.product.actions,
             key: 'action',
             render: (_: any, __: ProductType) => (
-                <div className="flex items-center gap-[10px]">
-                    <Button color="geekblue" variant="solid">
-                        <Pen width={16} height={16} />
-                        {t.common.edit}
-                    </Button>
-                    <Button color="danger" variant="solid">
-                        <Trash width={16} height={16} />
-                        {t.common.delete}
-                    </Button>
+                <div className="flex items-center gap-2">
+                    <Tooltip title={t.common.edit}>
+                        <Button
+                            type="text"
+                            icon={<Pen width={16} height={16} />}
+                            // onClick={() => handleEdit(__)}
+                        />
+                    </Tooltip>
+                    <Tooltip title={t.common.delete}>
+                        <Button
+                            type="text"
+                            icon={<Trash width={16} height={16} />}
+                            danger
+                            // onClick={() => handleDelete(__)}
+                        />
+                    </Tooltip>
                 </div>
             ),
             width: 150,
@@ -89,7 +96,7 @@ function Products() {
                     showIcon
                 />
                 <div className="mt-4">
-                    <Button onClick={() => window.location.reload()}>Thử lại</Button>
+                    <Button onClick={() => window.location.reload()}>{t.common.tryAgain}</Button>
                 </div>
             </div>
         );

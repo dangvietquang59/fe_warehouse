@@ -65,7 +65,7 @@ const Login = () => {
 
                     <div className="flex items-center justify-center gap-[10px]">
                         <span>Chưa có tài khoản?</span>
-                        <Link to={paths.login} className="text-blue-500">
+                        <Link to={paths.register} className="text-blue-500">
                             Đăng ký
                         </Link>
                     </div>

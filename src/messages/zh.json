@@ -5,7 +5,9 @@
         "delete": "刪除",
         "cancel": "取消",
         "save": "保存",
-        "close": "關閉"
+        "close": "關閉",
+        "tryAgain": "再試一次",
+        "search": "搜索"
     },
     "page": {
         "home": "首頁",
