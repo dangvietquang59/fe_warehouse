@@ -6,7 +6,7 @@ import authApis from '@/apis/authApis';
 import { Link } from 'react-router-dom';
 import paths from '@/utils/constants/paths';
 import { toast } from 'react-hot-toast';
-import { LoginType } from '@/types/auth/auth-type';
+import { LoginType } from '@/types/auth-type';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();

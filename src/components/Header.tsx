@@ -9,13 +9,13 @@ import {
     ClipboardPlus,
     PackageOpen,
     PackageSearch,
-    Settings,
     Truck,
     User,
 } from 'lucide-react';
 import { useState } from 'react';
 function Header() {
     const [seletedPage, setSeletedPage] = useState<string>(paths.home);
+
     const pages = [
         {
             name: 'Trang chủ',
@@ -49,11 +49,7 @@ function Header() {
             path: paths.employees,
             icon: <BookUser strokeWidth={1.5} />,
         },
-        {
-            name: 'Tài khoản',
-            path: paths.account,
-            icon: <Settings strokeWidth={1.5} />,
-        },
+
         {
             name: 'Báo cáo',
             path: paths.report,

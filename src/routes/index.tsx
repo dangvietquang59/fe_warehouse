@@ -1,34 +1,52 @@
 import { lazy } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import BlankLayout from '@/layouts/BlankLayout';
+import { RequireAuth, RedirectIfAuth } from '@/components/common/AuthCheck';
 
-const Home = lazy(() => import('@/pages/Home'));
+// const Home = lazy(() => import('@/pages/Home'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Login = lazy(() => import('@/pages/Login'));
 const Logup = lazy(() => import('@/pages/Logup'));
+const Products = lazy(() => import('@/pages/Products'));
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainLayout />,
+        element: <RequireAuth />,
         children: [
-            { index: true, element: <Home /> },
-            { path: 'dashboard', element: <Dashboard /> },
+            {
+                path: '/',
+                element: <MainLayout />,
+                children: [
+                    { index: true, element: <Dashboard /> },
+                    { path: 'dashboard', element: <Dashboard /> },
+                    { path: 'products', element: <Products /> },
+                ],
+            },
         ],
     },
     {
         path: '/auth',
-        element: <BlankLayout />,
+        element: <RedirectIfAuth />,
         children: [
             {
-                path: 'sign-in',
-                element: <Login />,
-            },
-            {
-                path: 'sign-up',
-                element: <Logup />,
+                element: <BlankLayout />,
+                children: [
+                    {
+                        path: 'sign-in',
+                        element: <Login />,
+                    },
+                    {
+                        path: 'sign-up',
+                        element: <Logup />,
+                    },
+                ],
             },
         ],
+    },
+    {
+        path: '*',
+        element: <Navigate to="/" replace />,
     },
 ]);
