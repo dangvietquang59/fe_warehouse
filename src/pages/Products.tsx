@@ -112,7 +112,7 @@ function Products() {
                         <Button
                             onClick={handleOpenModal}
                             className="h-[40px] flex items-center gap-[10px]"
-                            color="green"
+                            color="default"
                             variant="solid"
                         >
                             <Plus />

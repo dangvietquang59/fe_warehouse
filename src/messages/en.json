@@ -64,6 +64,7 @@
         "username": "Username",
         "role": "Role",
         "actions": "Actions",
-        "listEmployee": "List Employee"
+        "listEmployee": "List Employee",
+        "addEmployee": "Add Employee"
     }
 }

@@ -64,6 +64,7 @@
         "username": "用戶名",
         "role": "角色",
         "actions": "操作",
-        "listEmployee": "員工列表"
+        "listEmployee": "員工列表",
+        "addEmployee": "添加員工"
     }
 }

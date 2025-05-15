@@ -66,6 +66,7 @@
         "username": "Tên tài khoản",
         "role": "Vai trò",
         "actions": "Hành động",
-        "listEmployee": "Danh sách nhân viên"
+        "listEmployee": "Danh sách nhân viên",
+        "addEmployee": "Thêm nhân viên"
     }
 }

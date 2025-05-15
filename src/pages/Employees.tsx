@@ -1,11 +1,22 @@
 import { useUsers } from '@/queries/user-query';
 import { RoleType, UserType } from '@/types/user-type';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
-import { Table, Tag } from 'antd';
+import { Button, Table, Tag } from 'antd';
+import { Plus } from 'lucide-react';
 
 function Employees() {
     const { data: users, isLoading } = useUsers();
     const { t } = useTranslationCustom();
+
+    const mappingRole: Record<string, string> = {
+        admin: 'blue',
+        warehouse_manager: 'green',
+        stock_keeper: 'yellow',
+        viewer: 'purple',
+        purchase: 'orange',
+        auditor: 'red',
+    };
+
     const columns = [
         {
             title: 'STT',
@@ -36,14 +47,23 @@ function Employees() {
         {
             title: t.user.role,
             dataIndex: 'role',
-            render: (role: RoleType) => (
-                <Tag color={role.name === 'admin' ? 'blue' : 'green'}>{role.name}</Tag>
-            ),
+            render: (role: RoleType) => <Tag color={mappingRole[role.name]}>{role.name}</Tag>,
         },
     ];
     return (
         <div className="flex flex-col gap-[20px] bg-white p-[20px] rounded-[10px]">
-            <h1 className="text-2xl font-bold">{t.user.listEmployee}</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-2xl font-bold">{t.user.listEmployee}</h1>
+                <Button
+                    type="primary"
+                    className="w-fit flex items-center gap-[10px] h-[40px]"
+                    color="default"
+                    variant="solid"
+                >
+                    <Plus />
+                    {t.user.addEmployee}
+                </Button>
+            </div>
             <Table
                 columns={columns}
                 dataSource={users?.data}

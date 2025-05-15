@@ -2,15 +2,7 @@ import images from '@/assets/images';
 import paths from '@/utils/constants/paths';
 import { Image } from 'antd';
 import { Link } from 'react-router-dom';
-import {
-    BookUser,
-    Box,
-    ChartBarStacked,
-    ClipboardPlus,
-    PackageOpen,
-    PackageSearch,
-    Truck,
-} from 'lucide-react';
+import { BookUser, Box, ChartBarStacked, PackageOpen, PackageSearch, Truck } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import UserMenu from './UserMenu';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
@@ -57,11 +49,11 @@ function Header() {
             icon: <BookUser strokeWidth={1.5} />,
         },
 
-        {
-            name: t.page.reports,
-            path: paths.report,
-            icon: <ClipboardPlus strokeWidth={1.5} />,
-        },
+        // {
+        //     name: t.page.reports,
+        //     path: paths.report,
+        //     icon: <ClipboardPlus strokeWidth={1.5} />,
+        // },
     ];
     return (
         <header className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">

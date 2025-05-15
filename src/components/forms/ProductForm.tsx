@@ -55,7 +55,7 @@ function ProductForm({ handleCloseModal }: ProductFormProps) {
                         htmlType="submit"
                         className="text-white h-[40px]"
                         variant="solid"
-                        color="green"
+                        color="default"
                     >
                         {t.common.add}
                     </Button>
