@@ -64,6 +64,7 @@ function Header() {
                     width={50}
                     height={50}
                     className="rounded-full"
+                    preview={false}
                 />
                 <ul className="items-center gap-[30px] lg:flex hidden">
                     {pages.map(page => (
@@ -71,7 +72,7 @@ function Header() {
                             <Link
                                 to={page.path}
                                 onClick={() => setSelectedPage(page.path)}
-                                className={`text-[14px] text-[#737373] hover:text-black hover:duration-300 flex items-center gap-[10px] ${
+                                className={`text-[14px] text-[#737373] hover:text-green-700 hover:duration-300 flex items-center gap-[10px] ${
                                     selectedPage === page.path
                                         ? 'text-green-700 font-bold hover:text-green-700'
                                         : ''

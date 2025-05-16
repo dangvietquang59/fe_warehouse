@@ -4,5 +4,7 @@ const urls = {
     login: 'login',
     products: 'products',
     users: 'users',
+    categories: 'categories',
+    roles: 'roles',
 };
 export default urls;

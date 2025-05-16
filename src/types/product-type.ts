@@ -1,3 +1,5 @@
+import { CategoryType } from './category-type';
+
 export type ProductType = {
     id: number;
     SKU: string;
@@ -5,11 +7,7 @@ export type ProductType = {
     price: number;
     unit: string;
     description: string;
-    category: {
-        id: number;
-        name: string;
-        description: string;
-    };
+    category: CategoryType;
     quantity: number;
 };
 

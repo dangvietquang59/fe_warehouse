@@ -7,7 +7,6 @@ import { RequireAuth, RedirectIfAuth } from '@/components/common/AuthCheck';
 // const Home = lazy(() => import('@/pages/Home'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Login = lazy(() => import('@/pages/Login'));
-const Logup = lazy(() => import('@/pages/Logup'));
 const Products = lazy(() => import('@/pages/Products'));
 const Categories = lazy(() => import('@/pages/Categories'));
 const Orders = lazy(() => import('@/pages/Orders'));
@@ -43,10 +42,6 @@ export const router = createBrowserRouter([
                     {
                         path: 'sign-in',
                         element: <Login />,
-                    },
-                    {
-                        path: 'sign-up',
-                        element: <Logup />,
                     },
                 ],
             },

@@ -1,4 +1,5 @@
-import { useUsers } from '@/queries/user-query';
+import UserForm from '@/components/forms/UserForm';
+import { UserParams, useUsers } from '@/queries/user-query';
 import { RoleType, UserType } from '@/types/user-type';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
 import { Button, Modal, Table, Tag } from 'antd';
@@ -6,7 +7,13 @@ import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
 function Employees() {
-    const { data: users, isLoading } = useUsers();
+    const [params, setParams] = useState<UserParams>({ page: 1 });
+    const { data: users, isLoading: isLoadingUsers } = useUsers(params);
+
+    const handlePageChange = (page: number) => {
+        setParams({ ...params, page });
+    };
+
     const { t } = useTranslationCustom();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleCloseModal = () => {
@@ -76,8 +83,14 @@ function Employees() {
                 <Table
                     columns={columns}
                     dataSource={users?.data}
-                    loading={isLoading}
+                    loading={isLoadingUsers}
                     rowKey={record => record.id}
+                    pagination={{
+                        current: params.page,
+                        pageSize: 10,
+                        total: users?.total,
+                        onChange: handlePageChange,
+                    }}
                 />
             </div>
             <Modal
@@ -86,14 +99,9 @@ function Employees() {
                 onCancel={handleCloseModal}
                 footer={null}
                 centered
-                width={1200}
-                height={1200}
             >
                 <div className="flex items-center justify-center">
-                    <iframe
-                        src="https://fe-warehouse-chi.vercel.app/auth/sign-up"
-                        className="w-[1000px] h-[1000px]"
-                    />
+                    <UserForm closeModal={handleCloseModal} />
                 </div>
             </Modal>
         </>

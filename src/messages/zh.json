@@ -55,7 +55,8 @@
         "passwordNotMatch": "密碼不相符",
         "login": "登入",
         "register": "註冊",
-        "account": "帳號"
+        "account": "帳號",
+        "role": "角色"
     },
     "user": {
         "cardNumber": "卡號",

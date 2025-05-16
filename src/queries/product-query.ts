@@ -3,8 +3,11 @@ import { BaseDataType } from '@/types/base-data';
 import { ProductType } from '@/types/product-type';
 import { useQuery } from '@tanstack/react-query';
 
-export const useProducts = () =>
+export type ProductParams = {
+    page?: number;
+};
+export const useProducts = (params: ProductParams) =>
     useQuery<BaseDataType<ProductType>>({
-        queryKey: ['products'],
-        queryFn: productApis.getProducts,
+        queryKey: ['products', params],
+        queryFn: () => productApis.getProducts(params),
     });

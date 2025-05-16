@@ -4,13 +4,15 @@ export type RegisterType = {
     username: string;
     password: string;
     confirmPassword: string;
+    role_id: number;
 };
 
 export type Create_RegisterTyppe = {
     email: string;
-    fullname: string;
+    full_name: string;
     username: string;
     password: string;
+    role_id: number;
 };
 
 export type LoginType = {

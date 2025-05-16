@@ -1,12 +1,17 @@
 import { Button, Spin, Alert, Table, Input, Modal, Tag, Tooltip } from 'antd';
-import { useProducts } from '@/queries/product-query';
+import { ProductParams, useProducts } from '@/queries/product-query';
 import { ProductType } from '@/types/product-type';
 import { Pen, Plus, Trash } from 'lucide-react';
 import ProductForm from '@/components/forms/ProductForm';
 import { useState } from 'react';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
 function Products() {
-    const { data, isLoading, error } = useProducts();
+    const [params, setParams] = useState<ProductParams>({ page: 1 });
+
+    const { data: products, isLoading, error } = useProducts(params);
+    const handlePageChange = (page: number) => {
+        setParams({ ...params, page });
+    };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { t } = useTranslationCustom();
 
@@ -121,10 +126,16 @@ function Products() {
                     </div>
                 </div>
                 <Table
-                    dataSource={data?.data}
+                    dataSource={products?.data}
                     columns={columns}
                     loading={isLoading}
                     rowKey={record => record.id}
+                    pagination={{
+                        current: params.page,
+                        pageSize: 10,
+                        total: products?.total,
+                        onChange: handlePageChange,
+                    }}
                 />
             </div>
             <Modal

@@ -57,7 +57,8 @@
         "passwordNotMatch": "Mật khẩu không khớp",
         "login": "Đăng nhập",
         "register": "Đăng ký",
-        "account": "Tài khoản"
+        "account": "Tài khoản",
+        "role": "Vai trò"
     },
     "user": {
         "cardNumber": "Số thẻ",

@@ -55,7 +55,8 @@
         "passwordNotMatch": "Password not match",
         "login": "Login",
         "register": "Register",
-        "account": "Account"
+        "account": "Account",
+        "role": "Role"
     },
     "user": {
         "cardNumber": "Card Number",
