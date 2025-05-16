@@ -1,7 +1,7 @@
 import images from '@/assets/images';
 import paths from '@/utils/constants/paths';
 import { Image } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BookUser, Box, ChartBarStacked, PackageOpen, PackageSearch, Truck } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import UserMenu from './UserMenu';
@@ -12,8 +12,10 @@ function Header() {
         return localStorage.getItem('page') || paths.home;
     });
     const { t } = useTranslationCustom();
+    const navigate = useNavigate();
     useEffect(() => {
         localStorage.setItem('page', selectedPage);
+        navigate(selectedPage);
     }, [selectedPage]);
     const pages = [
         {

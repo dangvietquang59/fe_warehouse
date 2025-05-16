@@ -10,8 +10,11 @@ const Login = lazy(() => import('@/pages/Login'));
 const Products = lazy(() => import('@/pages/Products'));
 const Categories = lazy(() => import('@/pages/Categories'));
 const Orders = lazy(() => import('@/pages/Orders'));
+const PurchaseOrders = lazy(() => import('@/pages/PurchaseOrders'));
+const SalesOrders = lazy(() => import('@/pages/SalesOrders'));
 const Suppliers = lazy(() => import('@/pages/Suppliers'));
 const Employees = lazy(() => import('@/pages/Employees'));
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -26,6 +29,8 @@ export const router = createBrowserRouter([
                     { path: 'products', element: <Products /> },
                     { path: 'categories', element: <Categories /> },
                     { path: 'orders', element: <Orders /> },
+                    { path: 'purchase-orders', element: <PurchaseOrders /> },
+                    { path: 'sales-orders', element: <SalesOrders /> },
                     { path: 'suppliers', element: <Suppliers /> },
                     { path: 'employees', element: <Employees /> },
                 ],

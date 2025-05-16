@@ -1,13 +1,14 @@
-import { Button, Spin, Alert, Table, Input, Modal, Tooltip } from 'antd';
-import { SupplierParams, useSuppliers } from '@/queries/supplier-query';
-import { SupplierType } from '@/types/supplier-type';
-import { Pen, Plus, Trash } from 'lucide-react';
+import { Button, Spin, Alert, Table, Input, Modal, Tooltip, Tag } from 'antd';
+import { OrderParams, useSalesOrders } from '@/queries/order-query';
+import { OrderStatus, SalesOrderType } from '@/types/order-type';
+import { Eye, Pen, Plus, Trash } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslationCustom } from '@/utils/hooks/useTranslationCustom';
+import dayjs from 'dayjs';
 
-function Suppliers() {
-    const [params, setParams] = useState<SupplierParams>({ page: 1 });
-    const { data: suppliers, isLoading, error } = useSuppliers(params);
+function SalesOrders() {
+    const [params, setParams] = useState<OrderParams>({ page: 1 });
+    const { data: orders, isLoading, error } = useSalesOrders(params);
     const { t } = useTranslationCustom();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,42 +24,81 @@ function Suppliers() {
         setIsModalOpen(true);
     };
 
+    const getStatusColor = (status: OrderStatus) => {
+        switch (status) {
+            case 'pending':
+                return 'orange';
+            case 'approved':
+                return 'blue';
+            case 'rejected':
+                return 'red';
+            case 'completed':
+                return 'green';
+            default:
+                return 'default';
+        }
+    };
+
     const columns = [
         {
             title: 'STT',
             key: 'index',
-            render: (_: any, __: SupplierType, index: number) => index + 1,
+            render: (_: any, __: SalesOrderType, index: number) => index + 1,
         },
         {
-            title: 'Name',
-            dataIndex: 'name',
+            title: 'Order Number',
+            dataIndex: 'order_number',
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
+            title: 'Order Date',
+            dataIndex: 'order_date',
+            render: (date: string) => (date ? dayjs(date).format('DD/MM/YYYY') : '-'),
+        },
+        {
+            title: 'Customer',
+            dataIndex: 'customer_name',
         },
         {
             title: 'Phone',
-            dataIndex: 'phone',
+            dataIndex: 'customer_phone',
         },
         {
-            title: 'Email',
-            dataIndex: 'email',
+            title: 'Employee',
+            dataIndex: 'employee',
+            render: (employee: any) => employee?.full_name || '-',
         },
         {
-            title: 'Contact Person',
-            dataIndex: 'contact_person',
+            title: 'Status',
+            dataIndex: 'status',
+            render: (status: OrderStatus) =>
+                status ? <Tag color={getStatusColor(status)}>{status.toUpperCase()}</Tag> : '-',
+        },
+        {
+            title: 'Total Amount',
+            dataIndex: 'total_amount',
+            render: (amount: number) =>
+                amount
+                    ? amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })
+                    : '0 ₫',
+            sorter: (a: SalesOrderType, b: SalesOrderType) => a.total_amount - b.total_amount,
         },
         {
             title: t.common.edit || 'Actions',
             key: 'action',
-            render: (_: any, __: SupplierType) => (
+            render: (_: any, _record: SalesOrderType) => (
                 <div className="flex items-center gap-2">
+                    <Tooltip title="View Details">
+                        <Button
+                            type="text"
+                            icon={<Eye width={16} height={16} />}
+                            // onClick={() => handleViewDetails(record.id)}
+                        />
+                    </Tooltip>
                     <Tooltip title={t.common.edit}>
                         <Button
                             type="text"
                             icon={<Pen width={16} height={16} />}
-                            // onClick={() => handleEdit(__)}
+                            // onClick={() => handleEdit(record.id)}
                         />
                     </Tooltip>
                     <Tooltip title={t.common.delete}>
@@ -66,7 +106,7 @@ function Suppliers() {
                             type="text"
                             icon={<Trash width={16} height={16} />}
                             danger
-                            // onClick={() => handleDelete(__)}
+                            // onClick={() => handleDelete(record.id)}
                         />
                     </Tooltip>
                 </div>
@@ -88,7 +128,7 @@ function Suppliers() {
             <div className="p-4">
                 <Alert
                     message="Lỗi tải dữ liệu"
-                    description={`Không thể lấy danh sách nhà cung cấp: ${
+                    description={`Không thể lấy danh sách đơn bán hàng: ${
                         (error as Error).message
                     }`}
                     type="error"
@@ -101,11 +141,15 @@ function Suppliers() {
         );
     }
 
+    // Ensure data is always an array
+    const orderData = Array.isArray(orders?.data) ? orders.data : [];
+    const totalItems = orders?.total || 0;
+
     return (
         <>
             <div className="flex flex-col gap-[20px] bg-white p-[20px] rounded-[10px]">
                 <div className="flex items-center justify-between">
-                    <h1 className="text-2xl font-bold">{t.page.suppliers}</h1>
+                    <h1 className="text-2xl font-bold">Sales Orders</h1>
                     <div className="flex items-center gap-[10px]">
                         <Input placeholder={t.common.search} className="h-[40px]" />
                         <Button
@@ -120,32 +164,33 @@ function Suppliers() {
                     </div>
                 </div>
                 <Table
-                    dataSource={suppliers?.data}
+                    dataSource={orderData}
                     columns={columns}
                     loading={isLoading}
                     rowKey={record => record.id}
                     pagination={{
                         current: params.page,
                         pageSize: 10,
-                        total: suppliers?.total,
+                        total: totalItems,
                         onChange: handlePageChange,
                     }}
                 />
             </div>
             <Modal
-                title={`${t.common.add} ${t.page.suppliers}`}
+                title="Add Sales Order"
                 open={isModalOpen}
                 onCancel={handleCloseModal}
                 footer={null}
                 centered
+                width={800}
             >
-                {/* TODO: Add SupplierForm component */}
+                {/* TODO: Add SalesOrderForm component */}
                 <div className="p-4">
-                    <Alert message="Supplier Form will be implemented here" type="info" />
+                    <Alert message="Sales Order Form will be implemented here" type="info" />
                 </div>
             </Modal>
         </>
     );
 }
 
-export default Suppliers;
+export default SalesOrders;

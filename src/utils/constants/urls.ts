@@ -6,5 +6,10 @@ const urls = {
     users: 'users',
     categories: 'categories',
     roles: 'roles',
+    activitiesLogs: 'activity-logs',
+    suppliers: 'suppliers',
+    orders: 'orders',
+    salesOrders: 'sales-orders',
+    purchaseOrders: 'purchase-orders',
 };
 export default urls;
