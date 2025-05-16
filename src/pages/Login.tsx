@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Button, Image } from 'antd';
 import images from '@/assets/images';
 import authApis from '@/apis/authApis';
-import { Link } from 'react-router-dom';
 import paths from '@/utils/constants/paths';
 import { toast } from 'react-hot-toast';
 import { LoginType } from '@/types/auth-type';
@@ -67,12 +66,6 @@ const Login = () => {
                         required
                     />
 
-                    <div className="flex items-center justify-center gap-[10px]">
-                        <span>{t.auth.noAccount}</span>
-                        <Link to={paths.register} className="text-blue-500">
-                            {t.auth.register}
-                        </Link>
-                    </div>
                     <Button type="primary" htmlType="submit" className="h-[40px]">
                         {t.auth.login}
                     </Button>
