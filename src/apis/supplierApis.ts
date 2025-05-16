@@ -1,6 +1,6 @@
 import axiosInstance from '@/lib/axiosInstance';
 import { SupplierParams } from '@/queries/supplier-query';
-import { CreateSupplierType, SupplierType } from '@/types/supplier-type';
+import { CreateSupplierType } from '@/types/supplier-type';
 import urls from '@/utils/constants/urls';
 
 const supplierApis = {
